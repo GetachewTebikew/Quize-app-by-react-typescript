@@ -84,7 +84,7 @@ function App() {
       ) : null}
       {!gameOver ? <p className="score">Score: { score }</p> : null}
       {loading && (<p>Loading Questions....</p>)}
-      {(!loading&&!gameOver)&&(<QuestionCard 
+      {(!loading&&!gameOver)&& !(userAnswers.length === TOTAL_QUSETIONS)&&(<QuestionCard 
         questionNr={number + 1}
         totalQuestions={TOTAL_QUSETIONS}
         question={questions[number].question}
@@ -92,7 +92,7 @@ function App() {
         userAnswer={userAnswers?userAnswers[number]:undefined}
       callback={checkAnswer}
       /> )}
-      {!gameOver && !(userAnswers.length === TOTAL_QUSETIONS)? (
+      {!loading && !gameOver && !(userAnswers.length === TOTAL_QUSETIONS)? (
         <button className="next" onClick={NextQuestion}>
           Next Question
         </button>
